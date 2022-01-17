@@ -46,8 +46,8 @@ final class TeamsListPresenter: TeamsListPresenterProtocol, TeamServiceProvider 
 
             switch result {
             case .success(let teamResponse):
-                guard let teams = teamResponse.teams else { return }
-
+                let teams = teamResponse.teams ?? []
+                
                 self?.teams = teams
                 self?.teamsView?.onTeamsFetched(teams: teams)
             case .failure(let error):

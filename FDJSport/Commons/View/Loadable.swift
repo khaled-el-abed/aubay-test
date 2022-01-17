@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 fileprivate struct Constants {
-    /// an arbitrary tag id for the loading view, so it can be retrieved later without keeping a reference to it
+
+    /// An arbitrary tag id for the loading view, so it can be retrieved later without keeping a reference to it
     fileprivate static let loadingViewTag = 1234
 }
 
@@ -17,8 +18,6 @@ protocol Loadable {
     func showLoadingView()
     func hideLoadingView()
 }
-
-
 
 /// Default implementation for UIViewController
 extension Loadable where Self: UIViewController {
@@ -56,10 +55,11 @@ final class LoadingView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        activityIndicatorView.color = .white
+
         backgroundColor = UIColor.black.withAlphaComponent(0.5)
         layer.cornerRadius = 5
 
+        activityIndicatorView.color = .white
         if activityIndicatorView.superview == nil {
             addSubview(activityIndicatorView)
 

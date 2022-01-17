@@ -8,6 +8,7 @@
 import Foundation
 
 protocol TeamDetailsPresenterProtocol {
+    func onStart()
     func fetchTeamDetails()
 }
 
@@ -35,6 +36,10 @@ final class TeamDetailsPresenter: TeamDetailsPresenterProtocol, TeamServiceProvi
     private var team: Team!
 
     // MARK: - Public Functions
+
+    func onStart() {
+        processResult(with: team)
+    }
 
     func fetchTeamDetails() {
 
@@ -70,10 +75,7 @@ final class TeamDetailsPresenter: TeamDetailsPresenterProtocol, TeamServiceProvi
         teamDetailsView?.setCountry(team.country)
         teamDetailsView?.setTeamDescription(team.description)
         teamDetailsView?.setLeague(team.league)
-        teamDetailsView?.setTitle(team.shortName)
-
-        guard let banner = banner else { return }
-
+        teamDetailsView?.setTitle(team.name)
         teamDetailsView?.setBanner(banner)
     }
 }

@@ -64,6 +64,7 @@ final class TeamDetailsViewController: UIViewController, Dependencies {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter.onStart()
         presenter.fetchTeamDetails()
     }
 

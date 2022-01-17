@@ -19,7 +19,7 @@ final class TeamViewCell: UICollectionViewCell {
 
     private lazy var listingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         return imageView
     }()
@@ -30,7 +30,6 @@ final class TeamViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setupUI()
-
     }
 
     required init?(coder: NSCoder) {
@@ -55,7 +54,9 @@ final class TeamViewCell: UICollectionViewCell {
 extension TeamViewCell {
 
     private func setLogo() {
-        guard let logoUrl = presenter.logoURL else { return }
+        guard let logoUrl = presenter.logoURL else {
+            return
+        }
 
         listingImageView.kf.setImage(with: logoUrl)
     }
