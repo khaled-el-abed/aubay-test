@@ -25,7 +25,12 @@ final class TeamsListViewController: UIViewController, Dependencies {
     // MARK: - Constants
 
     private enum LocalConstants {
-
+        static let itemHeight: CGFloat = 220
+        static let itemMargin: CGFloat = 16
+        static let minimumInteritemSpacing: CGFloat = 8
+        static let minimumLineSpacing: CGFloat = 18
+        static let sectionInset: UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        static let searchBarHeight: CGFloat = 20
     }
 
     // MARK: - Initialization
@@ -45,7 +50,7 @@ final class TeamsListViewController: UIViewController, Dependencies {
 
         setupUI()
 
-        presenter.fetchTeams(by: "English Premier League")
+        presenter.fetchTeams(by: "French Ligue 1")
     }
 
     // MARK: - Public Properties
@@ -55,17 +60,21 @@ final class TeamsListViewController: UIViewController, Dependencies {
     // MARK: Private Properties - UI Compnents
 
     private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar(frame: CGRect(x: .zero, y: .zero, width: view.bounds.width, height: 20))
+        let searchBar = UISearchBar(frame: CGRect(x: .zero,
+                                                  y: .zero,
+                                                  width: view.bounds.width,
+                                                  height: LocalConstants.searchBarHeight))
         return searchBar
     }()
 
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (view.bounds.width/2)-16, height: 220)
-        layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 18
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        layout.itemSize =  CGSize(width: (view.bounds.width/2)-LocalConstants.itemMargin,
+                                  height: LocalConstants.itemHeight)
+        layout.minimumInteritemSpacing = LocalConstants.minimumInteritemSpacing
+        layout.minimumLineSpacing = LocalConstants.minimumLineSpacing
+        layout.sectionInset = LocalConstants.sectionInset
         return layout
     }()
 
@@ -86,7 +95,6 @@ extension TeamsListViewController {
 
     private func setupUI() {
         view.backgroundColor = .white
-
         setupCollectionView()
         setupSearchBar()
     }

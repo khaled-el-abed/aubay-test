@@ -8,8 +8,8 @@
 import UIKit
 
 enum Fonts {
-    static let tilte = UIFont.boldSystemFont(ofSize: 18.0)
-    static let subtitle = UIFont.boldSystemFont(ofSize: 16)
+    static let tilte = UIFont.boldSystemFont(ofSize: 16.0)
+    static let subtitle = UIFont.boldSystemFont(ofSize: 15)
     static let body = UIFont.systemFont(ofSize: 14)
     static let caption = UIFont.italicSystemFont(ofSize: 12)
 }
